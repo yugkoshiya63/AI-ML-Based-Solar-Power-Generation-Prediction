@@ -28,7 +28,7 @@ An AI/ML-powered platform that predicts solar power generation based on environm
    ```
 
 4. **Access the Dashboard**
-   - Open your browser and go to `http://localhost:5000`
+   - Open your browser and go to `http://localhost:8080`
    - Enter your location and panel configuration
    - View predictions and recommendations
 
