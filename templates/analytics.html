@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Analytics - SolarPredict</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/analytics.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-solar-panel me-2"></i>
+                <span class="brand-text">SolarPredict</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/predict">Predict</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/analytics">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="container-fluid">
+            <!-- Header Section -->
+            <div class="analytics-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-chart-bar me-3"></i>Solar Analytics Dashboard</h1>
+                    <p>Comprehensive insights and analysis of your solar power generation</p>
+                    
+                    <!-- Workflow Progress -->
+                    <div class="workflow-progress">
+                        <div class="progress-step completed">
+                            <div class="step-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Location Set</h4>
+                                <p>Location configured</p>
+                            </div>
+                        </div>
+                        <div class="progress-step completed">
+                            <div class="step-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Panels Configured</h4>
+                                <p>Panel specs set</p>
+                            </div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Analytics</h4>
+                                <p>Viewing results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="refreshData">
+                        <i class="fas fa-sync-alt me-2"></i>Refresh Data
+                    </button>
+                    <button class="btn btn-outline-light" id="exportAll">
+                        <i class="fas fa-download me-2"></i>Export All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analytics Grid -->
+            <div class="analytics-grid">
+                <!-- Key Metrics -->
+                <div class="metrics-section">
+                    <h3><i class="fas fa-tachometer-alt me-2"></i>Key Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card primary">
+                            <div class="metric-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4 id="totalGeneration">0</h4>
+                                <p>Total Generation (kWh)</p>
+                                <span class="metric-change positive">+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card success">
+                            <div class="metric-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4 id="peakOutput">0</h4>
+                                <p>Peak Output (kW)</p>
+                                <span class="metric-change positive">+8.3%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card warning">
+                            <div class="metric-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4 id="efficiency">0%</h4>
+                                <p>System Efficiency</p>
+                                <span class="metric-change negative">-2.1%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card info">
+                            <div class="metric-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4 id="sunHours">0</h4>
+                                <p>Peak Sun Hours</p>
+                                <span class="metric-change positive">+5.7%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Power Generation Chart -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-area me-2"></i>Power Generation Trends</h3>
+                        <div class="chart-controls">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-sm btn-outline-primary active" data-period="daily">Daily</button>
+                                <button class="btn btn-sm btn-outline-primary" data-period="weekly">Weekly</button>
+                                <button class="btn btn-sm btn-outline-primary" data-period="monthly">Monthly</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="powerTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Weather Impact Analysis -->
+                <div class="weather-section">
+                    <h3><i class="fas fa-cloud-sun me-2"></i>Weather Impact Analysis</h3>
+                    <div class="weather-grid">
+                        <div class="weather-chart">
+                            <canvas id="weatherChart"></canvas>
+                        </div>
+                        <div class="weather-metrics">
+                            <div class="weather-metric">
+                                <div class="metric-label">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span>Temperature Impact</span>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value">-2.3%</span>
+                                    <span class="unit">per 10°C</span>
+                                </div>
+                            </div>
+                            <div class="weather-metric">
+                                <div class="metric-label">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>Cloud Cover Impact</span>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value">-0.7%</span>
+                                    <span class="unit">per 10%</span>
+                                </div>
+                            </div>
+                            <div class="weather-metric">
+                                <div class="metric-label">
+                                    <i class="fas fa-wind"></i>
+                                    <span>Wind Speed Impact</span>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value">+0.1%</span>
+                                    <span class="unit">per m/s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Comparison -->
+                <div class="comparison-section">
+                    <h3><i class="fas fa-balance-scale me-2"></i>Performance Comparison</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-chart">
+                            <canvas id="comparisonChart"></canvas>
+                        </div>
+                        <div class="comparison-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Current vs Optimal</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill current" style="width: 75%"></div>
+                                    <div class="stat-fill optimal" style="width: 100%"></div>
+                                </div>
+                                <div class="stat-value">75% efficiency</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Seasonal Variation</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill summer" style="width: 100%"></div>
+                                    <div class="stat-fill winter" style="width: 60%"></div>
+                                </div>
+                                <div class="stat-value">40% seasonal difference</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Peak vs Average</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill peak" style="width: 100%"></div>
+                                    <div class="stat-fill average" style="width: 65%"></div>
+                                </div>
+                                <div class="stat-value">35% peak advantage</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optimization Recommendations -->
+                <div class="recommendations-section">
+                    <h3><i class="fas fa-lightbulb me-2"></i>Optimization Recommendations</h3>
+                    <div class="recommendations-grid">
+                        <div class="recommendation-card high">
+                            <div class="recommendation-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span class="priority">High Priority</span>
+                            </div>
+                            <h5>Adjust Panel Tilt Angle</h5>
+                            <p>Your current tilt angle of 30° is not optimal for your location. Adjusting to 35° could increase generation by 8-12%.</p>
+                            <div class="recommendation-actions">
+                                <button class="btn btn-sm btn-primary">Apply Recommendation</button>
+                                <button class="btn btn-sm btn-outline-primary">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="recommendation-card medium">
+                            <div class="recommendation-header">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="priority">Medium Priority</span>
+                            </div>
+                            <h5>Clean Panel Surfaces</h5>
+                            <p>Dust and debris on your panels are reducing efficiency by approximately 3-5%. Regular cleaning could improve performance.</p>
+                            <div class="recommendation-actions">
+                                <button class="btn btn-sm btn-primary">Schedule Cleaning</button>
+                                <button class="btn btn-sm btn-outline-primary">View Guide</button>
+                            </div>
+                        </div>
+                        <div class="recommendation-card low">
+                            <div class="recommendation-header">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="priority">Low Priority</span>
+                            </div>
+                            <h5>Monitor Shading</h5>
+                            <p>Check for new obstructions that might be causing shading during peak sun hours. Even small shadows can significantly impact output.</p>
+                            <div class="recommendation-actions">
+                                <button class="btn btn-sm btn-primary">Check Shading</button>
+                                <button class="btn btn-sm btn-outline-primary">View Analysis</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historical Data Table -->
+                <div class="table-section">
+                    <h3><i class="fas fa-table me-2"></i>Historical Performance Data</h3>
+                    <div class="table-container">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Generation (kWh)</th>
+                                    <th>Peak Power (kW)</th>
+                                    <th>Efficiency (%)</th>
+                                    <th>Weather</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historicalTableBody">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+</body>
+</html>

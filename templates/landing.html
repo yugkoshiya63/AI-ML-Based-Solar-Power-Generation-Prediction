@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Power Prediction Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/landing.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-solar-panel me-2"></i>
+                <span class="brand-text">SolarPredict</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/predict">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/analytics">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-star me-2"></i>
+                            AI-Powered Solar Predictions
+                        </div>
+                        <h1 class="hero-title">
+                            Maximize Your <span class="text-gradient">Solar Power</span> Potential
+                        </h1>
+                        <p class="hero-description">
+                            Get accurate solar power predictions with our advanced machine learning platform. 
+                            Optimize your solar panel configuration and maximize your renewable energy investment.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="/predict" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-rocket me-2"></i>Start Predicting
+                            </a>
+                            <a href="#features" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-play me-2"></i>Learn More
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">AI Accuracy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Countries</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Predictions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">25%</div>
+                                <div class="stat-label">Energy Savings</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual">
+                        <div class="dashboard-preview">
+                            <div class="preview-card">
+                                <div class="card-header">
+                                    <h5>Solar Power Output</h5>
+                                    <div class="power-indicator">
+                                        <div class="power-bar">
+                                            <div class="power-fill"></div>
+                                        </div>
+                                        <span>2.4 kW</span>
+                                    </div>
+                                </div>
+                                <div class="chart-area">
+                                    <div class="chart-line"></div>
+                                    <div class="chart-dots">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Powerful Features</h2>
+                    <p class="section-description">
+                        Our platform combines cutting-edge AI with real-world solar data to deliver 
+                        the most accurate predictions and recommendations.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 mt-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI Prediction Engine</h4>
+                        <p>Advanced machine learning models trained on millions of data points to predict solar power generation with 95% accuracy.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <h4>Real-time Weather</h4>
+                        <p>Integration with weather APIs to provide accurate environmental data for precise power generation forecasts.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4>Optimal Configuration</h4>
+                        <p>Get personalized recommendations for panel tilt, azimuth, and placement to maximize your solar energy output.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Interactive Analytics</h4>
+                        <p>Beautiful visualizations and detailed analytics to understand your solar potential and performance trends.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h4>Export Reports</h4>
+                        <p>Generate comprehensive reports in CSV and PDF formats for detailed analysis and documentation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Global Coverage</h4>
+                        <p>Works worldwide with support for any location, from residential rooftops to large solar farms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section id="advanced-features" class="advanced-features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Advanced Features</h2>
+                    <p class="section-description">
+                        Cutting-edge technology and innovative tools to maximize your solar investment
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 mt-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Real-time Monitoring</h4>
+                        <p>Live monitoring of your solar system performance with instant alerts and notifications for optimal maintenance.</p>
+                        <div class="feature-badge">NEW</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>AI Optimization</h4>
+                        <p>Machine learning algorithms continuously optimize your system settings for maximum energy production.</p>
+                        <div class="feature-badge">AI</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Mobile App</h4>
+                        <p>Control and monitor your solar system from anywhere with our intuitive mobile application.</p>
+                        <div class="feature-badge">MOBILE</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Security & Privacy</h4>
+                        <p>Enterprise-grade security with end-to-end encryption to protect your data and privacy.</p>
+                        <div class="feature-badge">SECURE</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Multi-User Support</h4>
+                        <p>Collaborate with your team and share insights across multiple users and locations.</p>
+                        <div class="feature-badge">TEAM</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>API Integration</h4>
+                        <p>Seamlessly integrate with existing systems and third-party applications via our robust API.</p>
+                        <div class="feature-badge">API</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Advanced Analytics</h4>
+                        <p>Comprehensive data analysis with machine learning insights and performance optimization recommendations.</p>
+                        <div class="feature-badge">ANALYTICS</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Carbon Tracking</h4>
+                        <p>Monitor your environmental impact with real-time CO2 savings and sustainability metrics.</p>
+                        <div class="feature-badge">ECO</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card advanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4>Smart Alerts</h4>
+                        <p>Intelligent notifications for maintenance, performance issues, and optimization opportunities.</p>
+                        <div class="feature-badge">SMART</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-description">
+                        Get accurate solar predictions in just three simple steps with our AI-powered platform
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 mt-5">
+                <div class="col-lg-4">
+                    <div class="step-card" data-step="1">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h4>Enter Your Location</h4>
+                            <p>Select from our curated list of major cities worldwide or enter specific coordinates for precise analysis. Our AI analyzes your geographical data for optimal predictions.</p>
+                            <div class="step-features">
+                                <span class="feature-tag">GPS Integration</span>
+                                <span class="feature-tag">Global Coverage</span>
+                                <span class="feature-tag">Weather Data</span>
+                            </div>
+                        </div>
+                        <div class="step-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="step-card" data-step="2">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h4>Configure Panels</h4>
+                            <p>Set your solar panel specifications including area, tilt angle, and orientation for accurate predictions. Our system provides smart recommendations for optimal setup.</p>
+                            <div class="step-features">
+                                <span class="feature-tag">Smart Recommendations</span>
+                                <span class="feature-tag">Panel Optimization</span>
+                                <span class="feature-tag">Real-time Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="step-card" data-step="3">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h4>Get Predictions</h4>
+                            <p>Receive detailed power generation forecasts, optimization recommendations, and actionable insights. Export reports and track your solar performance over time.</p>
+                            <div class="step-features">
+                                <span class="feature-tag">AI Predictions</span>
+                                <span class="feature-tag">Export Reports</span>
+                                <span class="feature-tag">Performance Tracking</span>
+                            </div>
+                        </div>
+                        <div class="step-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Demo Section -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="demo-section">
+                        <h3 class="demo-title">See It In Action</h3>
+                        <p class="demo-description">Watch our platform work with real data and see the power of AI-driven solar predictions</p>
+                        <div class="demo-video">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <h4>Interactive Demo</h4>
+                                <p>Click to see how our platform works</p>
+                            </div>
+                        </div>
+                        <div class="demo-stats">
+                            <div class="demo-stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Accuracy Rate</div>
+                            </div>
+                            <div class="demo-stat">
+                                <div class="stat-number">2.5s</div>
+                                <div class="stat-label">Average Response</div>
+                            </div>
+                            <div class="demo-stat">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Successful Predictions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2>Ready to Optimize Your Solar Investment?</h2>
+                    <p>Join thousands of users who are already maximizing their solar energy potential</p>
+                    <a href="/predict" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Start Your Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-brand">
+                        <i class="fas fa-solar-panel me-2"></i>
+                        SolarPredict
+                    </div>
+                    <p>Empowering the future of renewable energy through AI-powered solar predictions.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer-links">
+                        <a href="/predict">Get Started</a>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SolarPredict. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/landing.js') }}"></script>
+</body>
+</html>

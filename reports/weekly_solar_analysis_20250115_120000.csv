@@ -1,0 +1,10 @@
+Date,Day,Peak Power (W),Daily Energy (kWh),Efficiency (%),Weather Condition,Sun Hours,CO2 Saved (kg),Cost Savings ($),Panel Temperature (°C),Inverter Efficiency (%),System Losses (%),Shading Factor,Optimal Tilt Angle,Current Tilt Angle,Improvement Potential (%)
+2025-01-09,Monday,342.1,2.782,20.8,Clear,8.5,1.402,0.311,28.9,95.2,4.8,0.02,35,30,12.5
+2025-01-10,Tuesday,298.6,2.456,19.8,Partly Cloudy,7.2,1.238,0.275,26.7,94.8,5.2,0.05,35,30,15.2
+2025-01-11,Wednesday,365.4,3.124,22.1,Clear,9.1,1.575,0.350,31.2,95.5,4.5,0.01,35,30,8.7
+2025-01-12,Thursday,312.7,2.689,21.3,Overcast,6.8,1.356,0.301,25.4,94.2,5.8,0.08,35,30,18.3
+2025-01-13,Friday,278.9,2.234,19.5,Cloudy,5.9,1.126,0.250,23.8,93.9,6.1,0.12,35,30,22.1
+2025-01-14,Saturday,356.8,2.987,21.9,Clear,8.7,1.506,0.334,29.6,95.3,4.7,0.03,35,30,9.8
+2025-01-15,Sunday,334.2,2.745,20.6,Partly Cloudy,7.8,1.384,0.307,27.3,94.9,5.1,0.06,35,30,13.4
+Weekly Average,Week,325.5,2.574,20.9,Variable,7.6,1.298,0.288,26.7,94.8,5.2,0.06,35,30,14.3
+Weekly Total,Week,2276.5,18.015,20.9,Variable,53.2,9.087,2.018,186.9,94.8,5.2,0.06,35,30,14.3
